@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Filter</title>
+<link rel="stylesheet" href="searchfilter.css">
+<style>body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #00e5ff;
+  background-image: url("https://w0.peakpx.com/wallpaper/141/754/HD-wallpaper-3d-white-texture-white-geometric-texture-3d-white-background-3d-gypsum-white-texture-white-creative-background.jpg");
+}
+
+.container {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ff0000;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#itemList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  padding: 8px;
+  border-bottom: 1px solid #37be5d;
+  transition: background-color 0.3s;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item:hover {
+  background-color:rgb(255, 206, 242);
+}</style>
+</head>
+<body>
+<div class="container">
+  <h1>Search Filter</h1>
+  <input type="text" id="searchInput" placeholder="Search...">
+  <ul id="itemList">
+    <li class="item">Apple</li>
+    <li class="item">Banana</li>
+    <li class="item">Cherry</li>
+    <li class="item">Grapes</li>
+    <li class="item">Lemon</li>
+    <li class="item">Mango</li>
+    <li class="item">Orange</li>
+  </ul>
+</div>
+<script>const searchInput = document.getElementById('searchInput');
+  const itemList = document.getElementsByClassName('item');
+  
+  searchInput.addEventListener('input', function() {
+    const searchTerm = searchInput.value.toLowerCase();
+    for (let i = 0; i < itemList.length; i++) {
+      const itemText = itemList[i].textContent.toLowerCase();
+      if (itemText.includes(searchTerm)) {
+        itemList[i].style.display = 'block';
+      } else {
+        itemList[i].style.display = 'none';
+      }
+    }
+  });</script>
+</body>
+</html>
